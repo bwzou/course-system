@@ -20,8 +20,12 @@ public class AdminManageDao {
 		return rst;
 	}
 	
-	public int deleteCourseInfo(){
-		return 0;
+	public int deleteCourseInfo(String cid){
+		String sql="DELETE FROM `courses` WHERE `cid` = ?";
+		int rst = 0;
+		rst = dbHelper.execOthers(sql,cid);
+		dbHelper.closeAll();	
+		return rst;
 	}
 	
 	public int changeCourseInfo(){
