@@ -1,20 +1,15 @@
 package com.iframe.inframe;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
-import java.util.List;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -25,7 +20,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import com.Dao.AdminManageDao;
-import com.util.MyDocument;
 
 public class CourseAddFrame extends JInternalFrame{
 	class addBookActionListener implements ActionListener {		// 添加按钮的单击事件监听器
@@ -80,12 +74,22 @@ public class CourseAddFrame extends JInternalFrame{
 			}
 		}
 	}
+	
 	class CloseActionListener implements ActionListener {			// 添加关闭按钮的事件监听器
 		public void actionPerformed(final ActionEvent e) {
 			doDefaultCloseAction();
 		}
 	}
 	
+	class NumberListener extends KeyAdapter {
+		public void keyTyped(KeyEvent e) {
+			String numStr="0123456789"+(char)8;
+			if(numStr.indexOf(e.getKeyChar())<0){
+				e.consume();
+			}
+		}
+	}
+
 	
 	private JTextField cid;
 	private JTextField cname;
@@ -123,9 +127,8 @@ public class CourseAddFrame extends JInternalFrame{
 		panel.add(label_1);
 		cid = new JTextField();
 		panel.add(cid);
-//		ISBN.addKeyListener(new ISBNkeyListener());
-//		ISBN.addFocusListener(new ISBNFocusListener());
-		
+		cid.addKeyListener(new NumberListener());
+
 		final JLabel label_2 = new JLabel();
 		label_2.setText("课程名称：");
 		panel.add(label_2);

@@ -1,10 +1,6 @@
 package com.Dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Date;
-
-import po.CourseCatalog;
 
 import com.global.User;
 import com.util.DBHelper;

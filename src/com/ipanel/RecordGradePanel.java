@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.swing.JButton;
-import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,7 +23,6 @@ import javax.swing.border.TitledBorder;
 import po.RecordCourseInfo;
 
 import com.Dao.ProIndicateCourseDao;
-import com.iframe.ProfessorIFrame;
 import com.iframe.inframe.RecordGradeFrame;
 import com.iframe.inframe.ViewStuInfoFrame;
 

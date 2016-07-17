@@ -2,9 +2,7 @@ package com.ipanel;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.Label;
 import java.util.List;
 
 import javax.swing.JLabel;
@@ -13,13 +11,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
-import com.Dao.SelectCourseDao;
-
 import po.AlreadyCourse;
-import po.CourseCatalog;
+
+import com.Dao.SelectCourseDao;
 
 public class ViewGradePanel extends JPanel{
 	private JScrollPane scrollPane;

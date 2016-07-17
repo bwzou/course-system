@@ -9,10 +9,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import javax.lang.model.type.NullType;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -21,8 +21,11 @@ import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
+
+import org.pushingpixels.substance.api.SubstanceLookAndFeel;
+import org.pushingpixels.substance.api.skin.ChallengerDeepSkin;
 
 import com.Dao.LoginDao;
 import com.global.User;
@@ -34,13 +37,34 @@ public class UserLoginIFrame extends JFrame{
 
 	public static void main(String[] args) {
 
-		try {
-			UIManager.setLookAndFeel(UIManager
-					.getSystemLookAndFeelClassName());
-			new UserLoginIFrame();//登录窗口
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
+//		try {        
+//			UIManager.setLookAndFeel("org.pushingpixels.substance.api.skin.SubstanceOfficeBlue2007LookAndFeel");  
+//            JFrame.setDefaultLookAndFeelDecorated(true);  
+//            JDialog.setDefaultLookAndFeelDecorated(true);  
+//            SubstanceLookAndFeel.set(new BottleGreenColorScheme());  
+//            SubstanceLookAndFeel.setSkin(new EmeraldDuskSkin());  
+//            SubstanceLookAndFeel.setCurrentButtonShaper(new ClassicButtonShaper());  
+//            SubstanceLookAndFeel.setCurrentWatermark(new SubstanceBubblesWatermark());  
+//            SubstanceLookAndFeel.setCurrentBorderPainter(new StandardBorderPainter());  
+//            SubstanceLookAndFeel.setCurrentGradientPainter(new StandardGradientPainter());  
+//            SubstanceLookAndFeel.setCurrentTitlePainter(new FlatTitePainter());  
+//        
+            JFrame.setDefaultLookAndFeelDecorated(true);
+			JDialog.setDefaultLookAndFeelDecorated(true);
+            SwingUtilities.invokeLater(new Runnable() {
+              public void run() {
+                try {
+                  //默认
+                  SubstanceLookAndFeel.setSkin(new ChallengerDeepSkin());
+                  //UIManager.setLookAndFeel("org.pushingpixels.substance.api.skin.SubstanceModerateLookAndFeel");
+                } catch (Exception e) {
+                  System.out.println("Substance Raven Graphite failed to initialize");
+                }
+                // 以下自己的主窗口
+                new UserLoginIFrame();
+              }
+            });        
+		
 	}
 
 	private class UserResetAction implements ActionListener {     //重置

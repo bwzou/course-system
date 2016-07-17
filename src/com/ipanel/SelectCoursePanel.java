@@ -14,16 +14,19 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
 
 import po.CourseCatalog;
 
 import com.Dao.SelectCourseDao;
 
-public class SelectCoursePanel extends JPanel {       //查询课程
+public class SelectCoursePanel extends JPanel {       //查询课程    (在JInternalFrame中显示table有问题)
 	private JTextField textField;
-	private JTable table1,table2;
+	public JTable table1,table2;
 	private JComboBox choice;
 	private JScrollPane scrollPane1, scrollPane2;
+	
+	private DefaultTableModel listRecords = null;  //类变量
 	
 	String cousersearch[] = { "课程编号", "课程名称", "学分", "教师", "学时","院系",  "上课时间", "教室" ,"学费"};
 	
@@ -82,6 +85,15 @@ public class SelectCoursePanel extends JPanel {       //查询课程
 		scrollPane1.setPreferredSize(new Dimension(600, 250));
 		panel.add(scrollPane1);
 		
+		listRecords= new DefaultTableModel(null, this.cousersearch);
+		
+		table1 = new JTable();
+		table1.setModel(listRecords);
+		table1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		table1.setRowHeight(25);
+		scrollPane1.setViewportView(table1);
+		
+		
 		final JButton button = new JButton();
 		button.setText("查询");
 		panel_1_1.add(button);
@@ -98,7 +110,11 @@ public class SelectCoursePanel extends JPanel {       //查询课程
 					results=getselect(selectCourseDao.selectCourseByTname(textField.getText()));
 					
 				}
-				table1 = new JTable(results,cousersearch);
+				listRecords.setRowCount(0);
+				for(int i=0; i<results.length;i++){
+					listRecords.addRow(results[i]);
+				}
+				
 				table1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 				table1.setRowHeight(25);
 				scrollPane1.setViewportView(table1);

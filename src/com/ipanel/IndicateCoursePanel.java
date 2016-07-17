@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -19,7 +18,6 @@ import po.CourseCatalog;
 
 import com.Dao.ProIndicateCourseDao;
 import com.Dao.SelectCourseDao;
-import com.iframe.ProfessorIFrame;
 
 public class IndicateCoursePanel extends JPanel {
 	private JTextField textField;

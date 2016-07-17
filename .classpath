@@ -3,5 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="lib" path="F:/eclipse2/course system/lib/mysql-connector-java-5.0.8-bin.jar"/>
+	<classpathentry kind="lib" path="F:/eclipse2/course system/lib/substance-6.1.jar" sourcepath="F:/eclipse2/course system/lib/substance-6.0-sources.jar"/>
+	<classpathentry kind="lib" path="F:/eclipse2/course system/lib/trident.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

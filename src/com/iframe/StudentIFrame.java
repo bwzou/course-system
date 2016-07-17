@@ -2,6 +2,7 @@ package com.iframe;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import com.action.MenuActions;
 import com.global.User;
 import com.ipanel.BillSemesterPanel;
 import com.ipanel.ChooseCoursePanel;
@@ -44,6 +46,15 @@ public class StudentIFrame extends JFrame{
 		}
 	}
 
+	class ChangeSkinAction extends AbstractAction {     // 退出系统动作(继承最初的抽象类)
+		public ChangeSkinAction() {
+			super("换肤", null);
+		}
+		public void actionPerformed(final ActionEvent e) {
+			new ChangeSkinIFrame();
+		}
+	} 
+	
 	class ExitAction extends AbstractAction {     // 退出系统动作(继承最初的抽象类)
 		public ExitAction() {
 			super("退出系统", null);
@@ -72,7 +83,8 @@ public class StudentIFrame extends JFrame{
 		getContentPane().setLayout(borderLayout);
 		setTitle("Welcome to Course Registration System Of Wylie ");
 		setSize(800, 600);
-
+		setBounds(300, 100, 800, 600);
+		
 		titlePanel = new JPanel();
 		titlePanel.setLayout(new BorderLayout());
 		final JLabel label_1 = new JLabel(); 
@@ -85,11 +97,21 @@ public class StudentIFrame extends JFrame{
 		label_2.setText("用户："+User.username);
 		titlePanel.add(label_2,borderLayout.CENTER);
 		
+		final JButton changeskinButton = new JButton(new ChangeSkinAction());    //直接注册事件
+		ImageIcon changeskinicon=LoadImage.add("changeskin.png");
+		changeskinButton.setIcon(changeskinicon);
+		changeskinButton.setHideActionText(true);    //让控件上的文字不显示
+		
 		final JButton exitButton = new JButton(new ExitAction());    //直接注册事件
-		ImageIcon Exiticon=LoadImage.add("exittb.jpg");
+		ImageIcon Exiticon=LoadImage.add("quit1.png");
 		exitButton.setIcon(Exiticon);
-		exitButton.setHideActionText(true);    //让控件上的文字不显示
-		titlePanel.add(exitButton,borderLayout.EAST);
+		exitButton.setHideActionText(true);    
+		final JPanel panel0 = new JPanel();
+		panel0.setLayout(new FlowLayout());
+		panel0.add(changeskinButton);
+		panel0.add(exitButton);
+		
+		titlePanel.add(panel0,borderLayout.EAST);
 		getContentPane().add(titlePanel,BorderLayout.NORTH);
 		
 		
